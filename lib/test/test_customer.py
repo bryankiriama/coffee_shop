@@ -18,10 +18,11 @@ def test_customer_validation():
         Customer(123)  # wrong type
 
 
+
 def test_create_order_and_queries():
-    alice = Customer("Alice")
+    brian = Customer("brian")
     latte = Coffee("Latte")
-    alice.create_order(latte, 3.0)
-    alice.create_order(latte, 4.0)
-    assert len(alice.orders()) == 2
-    assert latte in alice.coffees()
+    brian.create_order(latte, 3.0)
+    brian.create_order(latte, 4.0)
+    assert len(brian.orders()) == 2
+    assert latte in brian.coffees()

@@ -16,14 +16,14 @@ def test_coffee_validation():
 
 
 def test_aggregates_and_customers():
-    alice = Customer("brian")
-    bob = Customer("kiriama")
+    brian = Customer("brian")
+    kiriama = Customer("kiriama")
     espresso = Coffee("Espresso")
-    alice.create_order(espresso, 3.0)
-    alice.create_order(espresso, 3.5)
-    bob.create_order(espresso, 4.0)
+    brian.create_order(espresso, 3.0)
+    brian.create_order(espresso, 3.5)
+    kiriama.create_order(espresso, 4.0)
 
     assert espresso.num_orders() == 3
     assert pytest.approx(espresso.average_price(), 0.0001) == (3.0 + 3.5 + 4.0) / 3
     customers = espresso.customers()
-    assert alice in customers and bob in customers
+    assert brian in customers and kiriama in customers
