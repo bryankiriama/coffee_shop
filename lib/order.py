@@ -1,50 +1,60 @@
-from typing import List
-
-
 class Order:
+  #class variable to store all orders
+    orders = []
 
-    _orders: List["Order"] = []
+    def __init__(self,customer,coffee,price):
+     self.customer =customer
+     self.coffee =coffee
+     self.price =price
 
-    def __init__(self, customer, coffee, price: float):
-        """Validate types (customer and coffee are expected to be instances of Customer and Coffee)."""
+     #add this order to the list of orders
+     Order.orders.append(self)
 
-        if customer is None or coffee is None:
-            raise TypeError("customer and coffee must be provided (non-None).")
+     @property
+     def customer(self):
+        return self ._customer
 
-        # price validation
-        if not isinstance(price, (int, float)):
-            raise TypeError("price must be a number.")
-        price = float(price)
-        if price < 1.0 or price > 10.0:
-            raise ValueError("price must be between 1.0 and 10.0 inclusive.")
+     @customer .setter
+     def customer(self,value):
+        if not isinstance(value, str):
+            raise TypeError("customer must be a string")
+        if not (1 <= len(value) <= 15):
+            raise ValueError("customer name must be 1–15 characters long")
 
-        self._customer = customer
-        self._coffee = coffee
-        self._price = price
+            self._customer
 
-        # append to class-level list (single source of truth)
-        Order._orders.append(self)
+     @property
+     def coffee(self):
+          return self ._coffee
 
-    # properties
-    @property
-    def customer(self):
-        return self._customer
+     @name.setter
+     def name(self, value):
+        if not isinstance(value, str):
+            print("Coffee name must be a string.")
+        if len(value) < 3:
+            raise TypeError("Coffee name must be at least 3 characters long")
 
-    @property
-    def coffee(self):
-        return self._coffee
+        self ._coffee = value
 
-    @property
-    def price(self):
-        return self._price
+        @property
+        def price(self):
+          return self ._price
 
-    @classmethod
-    def all(cls):
-        """Return all Order instances."""
-        return list(cls._orders)
-        return list(cls._orders)
-    @classmethod
-    def clear_all(cls):
-        """Clear all stored orders."""
-        cls._orders.clear()
-        cls._orders.clear()
+     @price .setter
+     def price(self,value):
+        self ._price = value
+        if not isinstance(value,float):
+           print('price must be a float')
+        if not(1.0<=value<=10.0):
+           raise TypeError('price must be between 1.0 and 10.0')
+        self ._customer = value
+
+
+
+
+
+
+
+
+
+    
