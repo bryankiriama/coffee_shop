@@ -2,7 +2,6 @@ class Order:
     all = []
 
     def __init__(self, customer, coffee, price):
-        # customer must be Customer instance
         from customer import Customer
         from coffee import Coffee
 
@@ -12,8 +11,9 @@ class Order:
         if not isinstance(coffee, Coffee):
             raise Exception("Order must have a valid Coffee")
 
-        if not (isinstance(price, float) or isinstance(price, int)):
+        if not isinstance(price, (int, float)):
             raise Exception("Price must be a number")
+
         if not (1.0 <= price <= 10.0):
             raise Exception("Price must be between 1.0 and 10.0")
 
@@ -34,3 +34,7 @@ class Order:
     @property
     def price(self):
         return self._price
+    
+    @classmethod
+    def clear_all(cls):
+        cls.all = []
